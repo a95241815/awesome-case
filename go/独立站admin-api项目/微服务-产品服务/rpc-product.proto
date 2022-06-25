@@ -1,0 +1,606 @@
+syntax = "proto3";
+
+package product;
+
+message PingRequest {
+
+}
+
+message PingResponse {
+
+}
+
+message ProductCommentScoreRequest {
+  int64 shop_id = 1;
+  string product_id = 2;
+}
+
+message ProductCommentScoreResponse {
+  repeated ProductCommentSource product_comment = 1;
+}
+
+message ProductCommentSource {
+  int64 product_id = 1;
+  int64 score_one = 2;
+  int64 score_two = 3;
+  int64 score_three = 4;
+  int64 score_four = 5;
+  int64 score_five = 6;
+}
+
+message ProductComment {
+  int64 id = 1;
+  string code = 2;
+  int64 shop_id = 3;
+  int64 product_id = 4;
+  string product_name = 5;
+  string observer = 6;
+  string observer_icon = 7;
+  string admin_user = 8;
+  string country = 9;
+  int64 score = 10;
+  int64 image_id = 11;
+  string images_id = 12;
+  string comment = 13;
+  string email = 14;
+  int64 helpful = 15;
+  int64 status = 16;
+  int64 is_show = 17;
+  int64 is_del = 18;
+  int64 is_top = 19;
+  int64 source = 20;
+  string express_image = 21;
+  int64 is_up = 22;
+  int64 sort = 23;
+  string comment_at = 24;
+  string created_at = 25;
+  string updated_at = 26;
+  int64 source_id = 27;
+}
+
+
+// product_detail
+message ProductDetailRequest {
+  int64 shop_id = 1;
+  int64 product_id = 2;
+  string product_handler = 3;
+  string fields = 4;
+}
+message ProductDetailResponse {
+  Product product = 1;
+}
+
+// product_delete
+message ProductDeleteRequest {
+  int64 shop_id = 7;
+  int64 product_id = 8;
+}
+message ProductDeleteResponse {
+
+}
+
+// product_list
+message ProductListRequest {
+  int64 limit = 1;
+  int64 page = 2;
+  int64 since_id = 3;
+  string created_at_min = 4;
+  string created_at_max = 5;
+  string updated_at_min = 6;
+  string updated_at_max = 7;
+  string published_at_min = 8;
+  string published_at_max = 9;
+  string published_status = 10;
+  int64 shop_id = 11;
+  string ids = 12;
+  string fields = 13;
+  string title = 14;
+  string handlers = 15;
+  bool is_new_version = 16;
+}
+message ProductListResponse {
+  repeated Product products = 1;
+}
+
+// product add
+message ProductAddRequest {
+  string title = 1;
+  double price = 2;
+  double compare_price = 3;
+  double weight = 4;
+  string weight_unit = 5;
+  string body_html = 6;
+  string status = 7;
+  repeated ProductImageAdd images = 9;
+  repeated ProductVariantAdd variants = 10;
+  int64 shop_id = 11;
+  string seo_title = 12;
+  string sku = 13;
+  string sold_out_policy = 14;
+  string seo_desc = 15;
+  string default_image_url = 16;
+  string is_use_stock = 17;
+  string requires_shipping = 18;
+  string default_sku_code = 19;
+  string attribute = 20;
+  repeated string tags = 21;
+  string fields = 22;
+  string youtube_video_url = 23;
+  int64 youtube_video_pos = 24;
+  int64 inventory_quantity = 25;
+  string vendor = 26;
+  string product_type = 27;
+  string metafields_global_title_tag = 28;
+  string metafields_global_description_tag = 29;
+  bool published = 30;
+  //  repeated OptionItem options
+}
+message ProductAddResponse {
+  Product product = 1;
+}
+
+// product update
+message ProductUpdateRequest {
+  string title = 1;
+  double price = 2;
+  double compare_price = 3;
+  double weight = 4;
+  string weight_unit = 5;
+  string body_html = 6;
+  string status = 7;
+  repeated ProductImageUpdate images = 9;
+  repeated ProductVariantUpdate1 variants = 10;
+  int64 shop_id = 11;
+  string seo_title = 12;
+  string sku = 13;
+  string sold_out_policy = 14;
+  string seo_desc = 15;
+  string default_image_url = 16;
+  string is_use_stock = 17;
+  string requires_shipping = 18;
+  string default_sku_code = 19;
+  string attribute = 20;
+  repeated string tags = 21;
+  int64 id = 22;
+  string fields = 23;
+  string youtube_video_url = 24;
+  int64 youtube_video_pos = 25;
+  int64 inventory_quantity = 26;
+  //  repeated OptionItem options
+}
+message ProductUpdateResponse {
+  Product product = 1;
+}
+
+message ProductVariantUpdate1 {
+  string spec = 1;
+  string image_url = 2;
+  double price = 3;
+  double weight = 4;
+  string weight_unit = 5;
+  string requires_shipping = 6;
+  int64 inventory_quantity = 7;
+  string options = 8;
+  int64  sort = 9;
+  string sku = 10;
+  string  title = 11;
+  double compare_price = 12;
+  int64 is_checked = 13;
+  int64 id = 14;
+}
+
+message ProductImageUpdate {
+  string url = 1;
+  int64 id = 2;
+}
+
+
+message ProductImageAdd {
+  string url = 1;
+}
+
+message VariantAdd {
+
+}
+
+// product count
+message ProductCountRequest {
+  int64 limit = 1;
+  int64 since_id = 2;
+  string created_at_min = 3;
+  string created_at_max = 4;
+  string updated_at_min = 5;
+  string updated_at_max = 6;
+  string published_at_min = 7;
+  string published_at_max = 8;
+  string published_status = 9;
+  int64 shop_id = 10;
+  string ids = 11;
+  string title = 12;
+  string handlers = 13;
+}
+message ProductCountResponse {
+  int64 count = 1;
+}
+
+// product-image add
+message ProductImageAddRequest {
+  int64 shop_id = 1;
+  int64 product_id = 2;
+  repeated int64 variant_ids = 3;
+  string url = 4;
+  string attachment = 5;
+  string filename = 6;
+  int64 sort = 7;
+}
+message ProductImageAddResponse {
+  ProductImage image = 1;
+}
+
+// product-image list
+message ProductImageListRequest {
+  int64 limit = 1;
+  int64 since_id = 2;
+  string created_at_min = 3;
+  string created_at_max = 4;
+  string updated_at_min = 5;
+  string updated_at_max = 6;
+  int64 product_id = 8;
+  int64 shop_id = 9;
+}
+message ProductImageListResponse {
+  repeated ProductImage images = 1;
+}
+
+// product-image detail
+message ProductImageDetailRequest {
+  int64 product_id = 1;
+  int64 image_id = 2;
+  int64 shop_id = 3;
+  string fields = 4;
+}
+message ProductImageDetailResponse {
+  ProductImage image = 1;
+}
+
+// product-image count
+message ProductImageCountRequest {
+  int64 product_id = 1;
+  int64 shop_id = 2;
+}
+message ProductImageCountResponse {
+  int64 count = 1;
+}
+
+// product-variant add
+message ProductVariantAddRequest {
+  int64 product_id = 1;
+  ProductVariantAdd variant = 2;
+  int64 shop_id = 3;
+}
+
+message ProductVariantAdd {
+  string spec = 1;
+  string image_url = 2;
+  double price = 3;
+  double weight = 4;
+  string weight_unit = 5;
+  string requires_shipping = 6;
+  int64 inventory_quantity = 7;
+  string options = 8;
+  int64  sort = 9;
+  string sku = 10;
+  string  title = 11;
+  double compare_price = 12;
+  int64 is_checked = 13;
+}
+message ProductVariantAddResponse {
+  ProductVariant variant = 1;
+}
+
+// product-variant update
+message ProductVariantUpdateRequest {
+  int64 product_id = 1;
+  ProductVariantUpdate variant = 2;
+  int64 shop_id = 3;
+  int64 variant_id = 4;
+}
+
+message ProductVariantUpdate {
+  string spec = 1;
+  string image_url = 2;
+  double price = 3;
+  double weight = 4;
+  string weight_unit = 5;
+  string requires_shipping = 6;
+  int64 inventory_quantity = 7;
+  string options = 8;
+  int64  sort = 9;
+  string sku = 10;
+  string  title = 11;
+  double compare_price = 12;
+  int64 is_checked = 13;
+}
+message ProductVariantUpdateResponse {
+  ProductVariant variant = 1;
+}
+
+// product-variant list
+message ProductVariantListRequest {
+  int64 shop_id = 1;
+  int64 product_id = 2;
+}
+message ProductVariantListResponse {
+  repeated ProductVariant variants = 1;
+}
+
+// product-variant detail
+message ProductVariantDetailRequest {
+  int64 shop_id = 1;
+  int64 variant_id = 2;
+}
+message ProductVariantDetailResponse {
+  ProductVariant variant = 1;
+}
+
+// product-variant count
+message ProductVariantCountRequest {
+  int64 shop_id = 1;
+  int64 product_id = 2;
+}
+message ProductVariantCountResponse {
+  int64 count = 1;
+}
+
+// product-variant delete
+message ProductVariantDeleteRequest {
+  int64 shop_id = 1;
+  int64 product_id = 2;
+  int64 variant_id = 3;
+}
+message ProductVariantDeleteResponse {
+
+}
+
+message Product {
+  string product_title = 1;
+  int64 product_id = 2;
+  string shop_url = 3;
+  string preview_url = 4;
+  string body_html = 5;
+  string seo_title = 6;
+  string seo_desc = 7;
+  string published_at = 8;
+  int64 is_use_stock = 9;
+  string soldout_policy = 10;
+  string handle = 11;
+  int64 status = 12;
+  string created_at = 13;
+  string updated_at = 14;
+  repeated ProductImage images = 15;
+  ProductImage default_image = 16;
+  repeated ProductVariant variants = 17;
+  double compare_at_price = 18;
+  double price = 19;
+  double weight = 20;
+  string weight_unit = 21;
+  string sub_title = 22;
+  string attribute = 23;
+  int64 comments = 24;
+  int64 is_show_comment = 25;
+  int64 scores = 26;
+  int64 count_skus = 27;
+  int64 count_success_views = 28;
+  int64 is_read = 29;
+  int64 count_sales = 30;
+  string youtube_video_url = 31;
+  int64 youtube_video_pos = 32;
+  string vendor = 33;
+  string product_type = 34;
+}
+
+message ProductImage {
+  int64  id = 1;
+  int64  product_id = 2;
+  int64  sort = 3;
+  int64 width = 4;
+  string url = 5;
+  repeated int64 variant_ids = 6;
+  string file_key = 7;
+  string created_at = 8;
+  string updated_at = 9;
+}
+
+message ProductVariant {
+  int64 id = 1;
+  string sku = 2;
+  string title = 3;
+  double  price = 4;
+  double  compare_price = 5;
+  string spec = 6;
+  double  weight = 7;
+  string weight_unit = 8;
+  int64 requires_shipping = 9;
+  int64 image_id = 10;
+  string created_at = 11;
+  string updated_at = 12;
+  int64 sort = 13;
+  int64 inventory_quantity = 14;
+  string inventory_policy = 15;
+  int64  product_id = 16;
+  int64  is_show = 17;
+  string image_url = 18;
+}
+
+message SpecItem {
+  string name = 1;
+  string value = 2;
+}
+
+message Category {
+  int64 id = 1;
+  string handler = 2;
+  string title = 3;
+  string body_html = 4;
+  int64 count_products = 5;
+  string product_ids = 6;
+  string seo_title = 7;
+  string seo_desc = 8;
+  string created_at = 9;
+  string updated_at = 10;
+  string product_sort_type = 11;
+  string image_url = 12;
+}
+
+message CategoryAddRequest {
+
+}
+
+message CategoryAddResponse {
+
+}
+
+message CategoryDetailRequest {
+  int64 shop_id = 1;
+  int64 category_id = 2;
+  string handler = 3;
+}
+
+message CategoryDetailResponse {
+  Category category = 1;
+}
+
+message CategoryListRequest {
+  int64 limit = 1;
+  int64 page = 2;
+  int64 since_id = 3;
+  string created_at_min = 4;
+  string created_at_max = 5;
+  string updated_at_min = 6;
+  string updated_at_max = 7;
+  int64 shop_id = 8;
+  int64 product_id = 9;
+}
+
+message CategoryListResponse {
+  repeated Category categories = 1;
+}
+
+message CategoryCountRequest {
+  int64 since_id = 1;
+  string created_at_min = 2;
+  string created_at_max = 3;
+  string updated_at_min = 4;
+  string updated_at_max = 5;
+  int64 shop_id = 6;
+}
+
+message CategoryCountResponse {
+  int64 count = 1;
+}
+
+message CategoryProduct {
+  int64 product_id = 1;
+  int64 category_id = 2;
+  int64 sort = 3;
+  int64 id = 4;
+}
+
+message CategoryProductAddRequest {
+  int64 product_id = 1;
+  int64 category_id = 2;
+  int64 sort = 3;
+  int64 shop_id = 4;
+}
+
+message CategoryProductAddResponse {
+  CategoryProduct category_product = 1;
+}
+
+message CategoryProductDetailRequest {
+  int64 shop_id = 1;
+  int64 category_id = 2;
+  int64 product_id = 3;
+}
+
+message CategoryProductDetailResponse {
+  CategoryProduct category_product = 1;
+}
+
+message CategoryProductListRequest {
+  int64 limit = 1;
+  int64 page = 2;
+  int64 since_id = 3;
+  string created_at_min = 4;
+  string created_at_max = 5;
+  string updated_at_min = 6;
+  string updated_at_max = 7;
+  int64 shop_id = 8;
+  int64 category_id = 9;
+  int64 sort_param = 10;
+}
+
+message CategoryProductListResponse {
+  repeated CategoryProduct category_products = 1;
+}
+
+message CategoryProductCountRequest {
+  string created_at_min = 2;
+  string created_at_max = 3;
+  string updated_at_min = 4;
+  string updated_at_max = 5;
+  int64 shop_id = 6;
+  int64 category_id = 7;
+}
+
+message CategoryProductCountResponse {
+  int64 count = 1;
+}
+
+// category product delete
+message CategoryProductDeleteRequest {
+  int64 shop_id = 1;
+  int64 category_id = 2;
+  int64 product_id = 3;
+}
+message CategoryProductDeleteResponse {
+
+}
+
+
+
+service ProductRPC {
+  rpc Ping(PingRequest) returns(PingResponse);
+
+  rpc ProductList(ProductListRequest) returns(ProductListResponse);
+  rpc ProductDetail(ProductDetailRequest) returns(ProductDetailResponse);
+  rpc ProductAdd(ProductAddRequest) returns(ProductAddResponse);
+  rpc ProductUpdate(ProductUpdateRequest) returns(ProductUpdateResponse);
+  rpc ProductCount(ProductCountRequest) returns(ProductCountResponse);
+  rpc ProductDelete(ProductDeleteRequest) returns(ProductDeleteResponse);
+
+  rpc ProductImageList(ProductImageListRequest) returns(ProductImageListResponse);
+  rpc ProductImageDetail(ProductImageDetailRequest) returns(ProductImageDetailResponse);
+  rpc ProductImageAdd(ProductImageAddRequest) returns(ProductImageAddResponse);
+  rpc ProductImageCount(ProductImageCountRequest) returns(ProductImageCountResponse);
+
+  rpc ProductVariantList(ProductVariantListRequest) returns(ProductVariantListResponse);
+  rpc ProductVariantDetail(ProductVariantDetailRequest) returns(ProductVariantDetailResponse);
+  rpc ProductVariantAdd(ProductVariantAddRequest) returns(ProductVariantAddResponse);
+  rpc ProductVariantUpdate(ProductVariantUpdateRequest) returns(ProductVariantUpdateResponse);
+  rpc ProductVariantCount(ProductVariantCountRequest) returns(ProductVariantCountResponse);
+  rpc ProductVariantDelete(ProductVariantDeleteRequest) returns(ProductVariantDeleteResponse);
+
+  rpc ProductCommentScoreList(ProductCommentScoreRequest) returns(ProductCommentScoreResponse);
+
+  rpc CategoryList(CategoryListRequest) returns(CategoryListResponse);
+  rpc CategoryDetail(CategoryDetailRequest) returns(CategoryDetailResponse);
+  rpc CategoryAdd(CategoryAddRequest) returns(CategoryAddResponse);
+  rpc CategoryCount(CategoryCountRequest) returns(CategoryCountResponse);
+
+  rpc CategoryProductList(CategoryProductListRequest) returns(CategoryProductListResponse);
+  rpc CategoryProductDetail(CategoryProductDetailRequest) returns(CategoryProductDetailResponse);
+  rpc CategoryProductAdd(CategoryProductAddRequest) returns(CategoryProductAddResponse);
+  rpc CategoryProductCount(CategoryProductCountRequest) returns(CategoryProductCountResponse);
+  rpc CategoryProductDelete(CategoryProductDeleteRequest) returns(CategoryProductDeleteResponse);
+}

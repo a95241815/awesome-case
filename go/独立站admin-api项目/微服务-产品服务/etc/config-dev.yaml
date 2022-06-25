@@ -1,0 +1,37 @@
+Name: product.rpc
+ListenOn: 0.0.0.0:8080
+Etcd:
+  Hosts:
+    - my-release-etcd.dev.svc.cluster.local:2379
+  Key: product.rpc
+ReadDataSource: mysail_seller:123456qqq@tcp(192.168.30.120:3306)/mysail_seller?charset=utf8mb4&parseTime=true&loc=Asia%2FShanghai
+WriteDataSource: mysail_seller:123456qqq@tcp(192.168.30.120:3306)/mysail_seller?charset=utf8mb4&parseTime=true&loc=Asia%2FShanghai
+Cache:
+  - Host: clustercfg.dbc-test-redis.qwsgdk.usw2.cache.amazonaws.com:6379
+    Pass: XL1k8sd21kJhuH
+    Type: cluster
+    Tls: true
+  - Host: 192.168.30.120:6379
+    Pass: Lp8h1$r43@
+    Type: node
+    Tls: false
+Timeout: 50000
+Prometheus:
+  Host: 0.0.0.0
+  Port: 9091
+  Path: /metrics
+MongoLink: mongodb://172.22.76.204
+MongoDBName: store-webhook
+ImgCDN: hn-img-mall-1.oss-cn-shenzhen.aliyuncs.com
+ProjectENV: xshoppy
+ENV: DEV
+StaticStorage:
+  AccessKey: AKIAZP5S3BDVT5BMDNVN
+  AccessSecret: 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
+  Bucket: emysale-fat-saas-static-us
+  Region: us-west-2
+AliOss:
+  Endpoint: http://oss-accelerate.aliyuncs.com
+  AccessKeyId: LTAI1GDaFsoQkdWd6qoGBySm
+  AccessKeySecret: KjIyNnbGRNO0ahIBIF9sVbZ6TmYKBC
+  BucketName: hn-img-mall-1/uploader
